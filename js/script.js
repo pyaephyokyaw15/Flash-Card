@@ -2,7 +2,7 @@
 let savedQuizzes = JSON.parse(localStorage.getItem("savedQuizzes")) || []; 
 
 
-// Seletors
+// Selectors
 const allCards = document.querySelector('#all-cards');
 const addQuestionBtn = document.querySelector('#add-question');
 const shuffleBtn = document.querySelector('#shuffle');
@@ -36,6 +36,7 @@ function removeLocalQuizzes(quizData){
 
 function createQuiz(questionSet) {
     allCards.innerHTML += `
+        <div class='card-container'>
             <div class = 'card'>
                 <div class='front'>
                     <i class="fas fa-times-circle remove-btn"></i>
@@ -45,7 +46,8 @@ function createQuiz(questionSet) {
                     <i class="fas fa-times-circle remove-btn"></i>
                     <p>${questionSet.answer}</p>
                 </div>
-            </div>      
+            </div>
+        </div>
     `;  
 }
 
@@ -54,7 +56,7 @@ function createQuiz(questionSet) {
 // hide question container at first
 $('#new-question-container').hide();
 
-// first show quizzessaved in local storage.
+// first show quizzes saved in local storage.
 savedQuizzes.forEach(createQuiz);
 
 // Pop up question add aera when click add button
@@ -94,13 +96,13 @@ newAnswer.addEventListener('keyup', event => {
 allCards.addEventListener('click', event => {
     const removeBtn = event.target;
     if (removeBtn.classList.contains('remove-btn')) {
-        $(removeBtn).parent().parent().hide(500);
+        $(removeBtn).parent().parent().hide(0);
     } 
     removeLocalQuizzes(removeBtn.parentElement.children[1].innerText);
 });
 
 // Shuffle Quizzes
-shuffleBtn.addEventListener('click', evenr => {
+shuffleBtn.addEventListener('click', event => {
     // Clear all cards
     allCards.innerHTML = '';
 
