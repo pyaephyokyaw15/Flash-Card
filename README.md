@@ -1,7 +1,9 @@
 
 # Flash Card
 
-Flash card is a useful memory-aid applications.
+* Flash card is a useful memory-aid applications.
+
+* Developed with pure css and jquery as a practice
 
 
 ## Demo
